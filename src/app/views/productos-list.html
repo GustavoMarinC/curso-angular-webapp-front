@@ -1,0 +1,27 @@
+<h2>{{titulo}}</h2>
+<hr>
+<div *ngIf="!productos">Cargando...</div>
+<div *ngIf="productos">
+
+    <div class="row">
+            <div class="col-3" *ngFor="let producto of productos">
+                <div class="card mb-3">
+                    <div *ngIf="producto.imagen">
+                        <img class="producto_imagen" src="http://localhost/curso-angular4-backend/uploads/{{producto.imagen}}">
+                    </div>
+                    <div *ngIf="!producto.imagen">
+                        <div class="imagen_relleno"></div>
+                    </div>
+                    <div class="caption"></div>
+                        <h3>{{producto.nombre}}</h3>
+                        <p>{{producto.precio}} S.</p>
+                        <p>
+                            <a [routerLink]="['/producto-detail',producto.id]" class="btn btn-primary">ver</a>
+                            <a [routerLink]="['/producto-editar',producto.id]" class="btn btn-warning">Editar</a>
+                            <a href="#" class="btn btn-danger">Borrar</a>
+                        </p>
+                </div>                 
+            </div>
+    </div>
+ 
+</div>
