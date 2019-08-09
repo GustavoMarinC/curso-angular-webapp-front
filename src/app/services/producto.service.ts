@@ -33,6 +33,18 @@ export class ProductoService{
         return this._http.post(this.url+'productos',params,{headers:headers});
     }
 
+    editProducto(id: any, producto: Producto){
+        let json = JSON.stringify(producto);
+        let params = "json="+json;
+        let headers = new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'});
+
+        return this._http.post(this.url+'update-producto/'+id, params, {headers:headers})
+    }
+
+    deleteProducto(id){
+       return this._http.get(this.url+'delete-producto/'+id);
+    }
+
     makeFileRequest(url: string, params:Array<String>, files: Array<any>){
         console.log("files:: "+files);
         return new Promise((resolve,reject)=>{
